@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import {withRouter} from 'react-router-dom';
 import * as Constants from '../constants';
+import MyContext from '../MyContext';
 const moment = require('moment');
 
 class TableRow extends Component {
@@ -10,8 +11,10 @@ class TableRow extends Component {
     this.cancelReservation = this.cancelReservation.bind(this);
   }
   cancelReservation() {
+    let { cancelBooking } = this.context;
     axios.delete(`${Constants.LOCAL_URL}${Constants.CANCEL_BOOKING}/${this.props.obj._id}`)
       .then((res) => {
+        cancelBooking(this.props.obj._id);
         this.props.history.push(Constants.MAKE_RESERVATION);
       })
       .catch(err => console.error(err));
@@ -35,5 +38,7 @@ class TableRow extends Component {
     );
   }
 }
+
+TableRow.contextType = MyContext;
 
 export default withRouter(TableRow);

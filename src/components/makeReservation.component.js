@@ -16,6 +16,7 @@ import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
 import 'react-datepicker/dist/react-datepicker.css';
 import * as Constants from "../constants";
+import MyContext from "../MyContext";
 
 const styles = theme => ({
   root: {
@@ -37,7 +38,6 @@ const styles = theme => ({
 class MakeReservation extends Component {
   constructor(props) {
     super(props);
-    console.log(props);
     this.onChangeCheckInDate = this.onChangeCheckInDate.bind(this);
     this.onChangeCheckOutDate = this.onChangeCheckOutDate.bind(this);
     this.onChangeRoom = this.onChangeRoom.bind(this);
@@ -153,6 +153,8 @@ class MakeReservation extends Component {
       };
       axios.post(`${Constants.LOCAL_URL}${Constants.ADD_BOOKING}`, obj)
         .then(res => {
+          let { user, setBookings } = this.context;
+          setBookings(user.username);
           this.setState({
             ...this.state,
             modalOpen: true,
@@ -282,5 +284,7 @@ class MakeReservation extends Component {
 MakeReservation.propTypes = {
   classes: PropTypes.object.isRequired,
 };
+
+MakeReservation.contextType = MyContext;
 
 export default withStyles(styles)(MakeReservation);
