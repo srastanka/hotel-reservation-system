@@ -1,0 +1,16 @@
+{
+  "rooms": [
+    {
+      "name": "Lunar Star Room (2 queen beds)"
+    },
+    {
+      "name": "Voyager V1 Room (1 king bed)"
+    },
+    {
+      "name": "Hydropolis Room (2 double beds)"
+    },
+    {
+      "name": "Apeiron Room (Presidential suite)"
+    }
+  ]
+}
