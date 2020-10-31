@@ -69,3 +69,11 @@ npm test
 # view all commands
 npm run
 ```
+
+## Utilities
+
+- Uses material-ui components
+- Uses React Context API to share state
+- Uses jest for testing
+- Uses react-testing-library for testing components
+- Uses enzyme to only mount the components, because we are using actual state and functions from App component. Ideally, when we use mocks, it won't be needed.

@@ -6,6 +6,7 @@ import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 import FormControl from '@material-ui/core/FormControl';
 import FormHelperText from '@material-ui/core/FormHelperText';
+import InputLabel from "@material-ui/core/InputLabel";
 import Select from '@material-ui/core/Select';
 import MenuItem from '@material-ui/core/MenuItem';
 import Dialog from '@material-ui/core/Dialog';
@@ -232,15 +233,15 @@ class MakeReservation extends Component {
         </Dialog>
         <h3>Make a new reservation</h3>
         <form onSubmit={this.onSubmit}>
-
           <FormControl required className={classes.formControl}>
-            <label>Select your room: </label>
+            <InputLabel htmlFor="room">Room</InputLabel>
             <Select
               value={this.state.room}
               onChange={this.onChangeRoom}
               inputProps={{
                 name: 'room',
                 id: 'room',
+                placeholder: 'Select a room'
               }}
             >
               <MenuItem value="" className={classes.disabled}>
